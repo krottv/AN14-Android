@@ -2,15 +2,14 @@ package com.github.krottv.tmstemp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
-import java.util.ArrayList
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var textView: TextView
-    var students = listOf(Student(18,1,"Lex"),
+    var students = arrayListOf(Student(18,1,"Lex"),
         Student(17,0,"Clark"),
         Student(22,5,"Lana"),
         Student(21,4,"John"),
@@ -19,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         Student(18,2,"Martha"),
         Student(17,0,"Jonatan"),
         Student(25,4,"Valery"),
-        Student(20,3,"Spencer")) as MutableList
+        Student(20,3,"Spencer"))
     var numberOfStudent : Int = 0
     set(value) {
         field = value
@@ -56,10 +55,12 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("numberOfStudent", numberOfStudent)
+        outState.putParcelableArrayList("students", students)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         numberOfStudent = savedInstanceState.getInt("numberOfStudent")
+        students = savedInstanceState.getParcelableArrayList<Student>("students") as ArrayList<Student>
     }
 }
