@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        numberOfStudent = savedInstanceState.getInt("numberOfStudent")
         students = savedInstanceState.getParcelableArrayList<Student>("students") as ArrayList<Student>
+        numberOfStudent = savedInstanceState.getInt("numberOfStudent")
     }
 }
