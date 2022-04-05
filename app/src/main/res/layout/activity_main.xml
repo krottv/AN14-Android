@@ -17,22 +17,19 @@
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp"/>
 
         <View
             android:background="@color/teal_200"
             android:layout_marginStart="21dp"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp"/>
 
         <View
             android:background="@color/teal_200"
             android:layout_marginStart="21dp"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -47,22 +44,19 @@
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp" />
 
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="21dp"
-            android:layout_weight="1"/>
+            android:layout_marginStart="21dp" />
 
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="21dp"
-            android:layout_weight="1"/>
+            android:layout_marginStart="21dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,14 +70,13 @@
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp" />
 
         <TextView
             android:textSize="12sp"
             android:layout_marginLeft="17dp"
             android:layout_marginRight="17dp"
-            android:layout_width="47dp"
+            android:layout_width="0dp"
             android:layout_height="47dp"
             android:layout_weight="1"
             android:text="Some Text Hello!" />
@@ -91,14 +84,13 @@
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp"/>
 
         <TextView
             android:textSize="12sp"
             android:layout_marginLeft="17dp"
             android:layout_marginRight="17dp"
-            android:layout_width="47dp"
+            android:layout_width="0dp"
             android:layout_height="47dp"
             android:layout_weight="1"
             android:text="Some Text Hello!" />
@@ -106,8 +98,7 @@
         <View
             android:background="@color/teal_200"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
@@ -133,29 +124,25 @@
             <View
                 android:background="@color/teal_200"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"/>
+                android:layout_height="100dp" />
 
             <View
                 android:background="@color/teal_200"
                 android:layout_marginStart="26dp"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"/>
+                android:layout_height="100dp" />
 
             <View
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="26dp"
-                android:layout_weight="1"
                 android:background="@color/teal_200" />
 
             <View
                 android:background="@color/teal_200"
                 android:layout_marginStart="26dp"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"/>
+                android:layout_height="100dp" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -181,64 +168,55 @@
             <View
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
             <View
                 android:layout_marginTop="15dp"
                 android:background="@color/teal_200"
                 android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"/>
+                android:layout_height="40dp" />
 
         </LinearLayout>
     </ScrollView>
