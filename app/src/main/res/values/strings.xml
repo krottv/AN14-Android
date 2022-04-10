@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TmsTemp</string>
+    <string name="the_first_resizable_text">The first resizable text</string>
+    <string name="the_second_resizable_text">The second resizable text</string>
+    <string name="change_first_text_size">Change first text size</string>
+    <string name="change_second_text_size">Change second text size</string>
+    <string name="some_text">Some text</string>
+    <string name="color_ic">Color</string>
+    <string name="some_big_text">Vivamus condimentum facilisis lorem, ac maximus tellus molestie sed. Vivamus condimentum facilisis lorem.</string>
+    <string name="move_ic">Move</string>
+    <string name="cut_ic">Cut</string>
+    <string name="volume_ic">Volume</string>
 </resources>
