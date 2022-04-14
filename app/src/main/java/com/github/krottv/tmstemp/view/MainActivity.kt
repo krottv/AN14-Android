@@ -1,15 +1,14 @@
 package com.github.krottv.tmstemp.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.github.krottv.tmstemp.presentation.MainViewModel
 import com.github.krottv.tmstemp.databinding.ActivityMainBinding
+import com.github.krottv.tmstemp.presentation.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
