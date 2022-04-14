@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TmsTemp</string>
+    <string name="changeText1">Текст с изменяемым размером номер 1</string>
+    <string name="changeText2">Текст с изменяемым размером номер 2</string>
+    <string name="textForFirstSeekBar">Поменять размер текста 1</string>
+    <string name="textForSecondSeekBar">Поменять размер текста 2</string>
 </resources>
