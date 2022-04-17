@@ -9,7 +9,7 @@ class MainActivityLayoutTransition(val activity: Activity) {
         val activityMain = ActivityMainBinding.inflate(LayoutInflater.from(activity))
         activity.setContentView(activityMain.root)
 
-        val mainTransitionController = MainTransitionController()
+        val mainTransitionController = MainTransitionController(activity)
 
         mainTransitionController.launchFirstScene(activityMain)
     }
