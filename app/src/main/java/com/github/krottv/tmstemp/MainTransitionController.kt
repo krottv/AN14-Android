@@ -2,8 +2,10 @@ package com.github.krottv.tmstemp
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.helper.widget.Layer
 import androidx.constraintlayout.widget.Group
 import androidx.transition.ChangeBounds
@@ -18,6 +20,8 @@ class MainTransitionController(val activity: Activity) {
     }
 
     private val loadImage = LoadImage(activity)
+
+    private lateinit var valueAnimator: ValueAnimator
 
     private fun launchObjectAnimation(item: Int, scene: Scene) {
         ObjectAnimator().apply {
@@ -67,29 +71,26 @@ class MainTransitionController(val activity: Activity) {
             launchSecondScene(activityMain)
         }
 
-        launchObjectAnimation(R.id.imageView3, firstScene)
-        launchObjectAnimation(R.id.textView5, firstScene)
-        launchObjectAnimation(R.id.textView6, firstScene)
-
-        //Выдает ошибку при переходе на другу сцену
-        /* ValueAnimator().apply {
-             duration = 2000L
-             repeatCount = ObjectAnimator.INFINITE
-             repeatMode = ObjectAnimator.REVERSE
-             setFloatValues(1f, 0f)
-             addUpdateListener {
-                 val value = it.animatedValue as Float
-                 //findViewById<Layer>(R.id.layer2).alpha = value
-                 firstScene.sceneRoot.findViewById<ImageView>(R.id.imageView3).alpha = value
-                 firstScene.sceneRoot.findViewById<TextView>(R.id.textView5).alpha = value
-                 firstScene.sceneRoot.findViewById<TextView>(R.id.textView6).alpha = value
-             }
-             start()
-         }*/
+        valueAnimator = ValueAnimator().apply {
+            duration = 2000L
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+            setFloatValues(1f, 0f)
+            addUpdateListener {
+                val value = it.animatedValue as Float
+                firstScene.sceneRoot.findViewById<ImageView>(R.id.imageView3).alpha = value
+                firstScene.sceneRoot.findViewById<TextView>(R.id.textView5).alpha = value
+                firstScene.sceneRoot.findViewById<TextView>(R.id.textView6).alpha = value
+            }
+            start()
+        }
     }
 
 
     fun launchSecondScene(activityMain: ActivityMainBinding) {
+
+        valueAnimator.end()
+
         val secondScene = Scene.getSceneForLayout(
             activityMain.rootScene,
             R.layout.second_paragraph_second_scene,
