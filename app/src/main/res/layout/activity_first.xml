@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sceneRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layerFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textViewFirstPoint,textViewFirst,imageViewFirst"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFirst"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFirst"
+        app:layout_constraintStart_toStartOf="@+id/imageViewFirst"
+        app:layout_constraintTop_toTopOf="@+id/textViewFirstPoint" />
+
+    <TextView
+        android:id="@+id/textViewFirstPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="First point"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewFirst"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFirst" />
+
+    <ImageView
+        android:id="@+id/imageViewFirst"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineFirst"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewFirst"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/TextViewFirst"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toEndOf="@+id/imageViewFirst"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFirstPoint"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="170dp" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layerSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="imageViewSecond,textViewSecond,textViewSecondPoint"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSecond"
+        app:layout_constraintEnd_toEndOf="@+id/textViewSecond"
+        app:layout_constraintTop_toTopOf="@+id/textViewSecondPoint" />
+
+    <ImageView
+        android:id="@+id/imageViewSecond"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineFirst"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewSecondPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="Second point"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSecond"
+        app:layout_constraintTop_toTopOf="@+id/imageViewSecond" />
+
+    <TextView
+        android:id="@+id/textViewSecond"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="17dp"
+        android:text="@string/textViewSecond"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineSecond"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSecond"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSecondPoint"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="296dp" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layerThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textViewThirdPoint,imageViewThird,textViewThird"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewThird"
+        app:layout_constraintEnd_toEndOf="@+id/textViewThird"
+        app:layout_constraintStart_toStartOf="@+id/imageViewThird"
+        app:layout_constraintTop_toTopOf="@+id/textViewThirdPoint" />
+
+    <ImageView
+        android:id="@+id/imageViewThird"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineSecond"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewThirdPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="Third point"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewThird"
+        app:layout_constraintTop_toTopOf="@+id/imageViewThird" />
+
+    <TextView
+        android:id="@+id/textViewThird"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="17dp"
+        android:text="Maecenas mattis egestas ullamcorper.
+        Aenean mauris turpis, varius sit amet purus at, elementum ultricies lorem."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewThird"
+        app:layout_constraintTop_toBottomOf="@+id/textViewThirdPoint" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
