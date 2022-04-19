@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TmsTemp</string>
+    <string name="SomeText1">Пункт первый</string>
+    <string name="SomeText11">Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст</string>
+    <string name="SomeText2">Пункт второй</string>
+    <string name="SomeText21">Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст</string>
+    <string name="SomeText3">Пункт третий</string>
+    <string name="SomeText31">Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст</string>
 </resources>
