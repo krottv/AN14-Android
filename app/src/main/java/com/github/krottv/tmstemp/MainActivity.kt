@@ -2,7 +2,9 @@ package com.github.krottv.tmstemp
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.github.krottv.tmstemp.databinding.HomeworkBinding
@@ -25,8 +27,26 @@ class MainActivity : AppCompatActivity() {
         }
         setContentView(layout.root)
 
-        mainViewModel.setLayoutTextSize(layout, layout.firstText.id)
-        mainViewModel.setLayoutTextSize(layout, layout.secondText.id)
+        fun setSeekBar(seekBar: SeekBar, seekBarNumber: Int) {
+            seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                    mainViewModel.onProgressChanged(seekBarNumber, p1, seekBar.max)
+                }
+
+                override fun onStartTrackingTouch(p0: SeekBar?) {}
+                override fun onStopTrackingTouch(p0: SeekBar?) {}
+            })
+        }
+
+        setSeekBar(layout.seekBarFirstChange, 0)
+        setSeekBar(layout.seekBarSecondChange, 1)
+
+        lifecycleScope.launchWhenStarted {
+            mainViewModel.state.collect {
+                layout.firstText.textSize = it.textSizeFirst
+                layout.secondText.textSize = it.textSizeSecond
+            }
+        }
     }
 }
 
