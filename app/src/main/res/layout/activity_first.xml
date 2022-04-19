@@ -2,9 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sceneRoot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/sceneRoot">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layerFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textViewFirstPoint,textViewFirst,imageViewFirst"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFirst"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFirst"
+        app:layout_constraintStart_toStartOf="@+id/imageViewFirst"
+        app:layout_constraintTop_toTopOf="@+id/textViewFirstPoint" />
 
     <TextView
         android:id="@+id/textViewFirstPoint"
@@ -24,6 +34,7 @@
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="44dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guidelineFirst"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,8 +48,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="25dp"
-        android:text="Maecenas mattis egestas ullamcorper.
-        Aenean mauris turpis, varius sit amet purus at, elementum ultricies lorem."
+        android:text="@string/TextViewFirst"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineFirst"
@@ -55,11 +65,21 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="170dp" />
 
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layerSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="imageViewSecond,textViewSecond,textViewSecondPoint"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSecond"
+        app:layout_constraintEnd_toEndOf="@+id/textViewSecond"
+        app:layout_constraintTop_toTopOf="@+id/textViewSecondPoint" />
+
     <ImageView
         android:id="@+id/imageViewSecond"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineFirst"
         tools:srcCompat="@tools:sample/avatars" />
@@ -83,10 +103,9 @@
         android:layout_marginStart="19dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="17dp"
-        android:text="Maecenas mattis egestas ullamcorper.
-        Aenean mauris turpis, varius sit amet purus at, elementum ultricies lorem."
-        android:textSize="12sp"
+        android:text="@string/textViewSecond"
         android:textColor="@color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineSecond"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewSecond"
@@ -100,11 +119,22 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="296dp" />
 
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layerThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="textViewThirdPoint,imageViewThird,textViewThird"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewThird"
+        app:layout_constraintEnd_toEndOf="@+id/textViewThird"
+        app:layout_constraintStart_toStartOf="@+id/imageViewThird"
+        app:layout_constraintTop_toTopOf="@+id/textViewThirdPoint" />
+
     <ImageView
         android:id="@+id/imageViewThird"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineSecond"
         tools:srcCompat="@tools:sample/avatars" />

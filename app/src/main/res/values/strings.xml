@@ -2,4 +2,6 @@
     <string name="app_name">TmsTemp</string>
     <string name="text_second_description">Aenean turpis nibh, mattis at erat vitae, consequat sagittis nisi. In convallis leo nec sem interdum faucibus. Nunc porta, felis ut sollicitudin volutpat, arcu urna suscipit lectus, a mattis sem metus in ex. Duis pretium eleifend dignissim. Fusce ac pharetra leo, eget porta mi. Mauris id nulla tincidunt, placerat erat at, feugiat leo. Aenean cursus nec massa quis sagittis.</string>
     <string name="close">Close</string>
+    <string name="TextViewFirst">Maecenas mattis egestas ullamcorper. Aenean mauris turpis, varius sit amet purus at, elementum ultricies lorem.</string>
+    <string name="textViewSecond">Maecenas mattis egestas ullamcorper. Aenean mauris turpis, varius sit amet purus at, elementum ultricies lorem.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.binding
+package com.github.krottv.tmstemp.binder
 
 interface MainActivityDataBinder {
     fun bind()
