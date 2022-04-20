@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     if (it.isSuccess) {
                         mainActivityDataBinder.onDataLoaded(it.getOrThrow())
                     } else {
-                        mainActivityDataBinder.showError()
+                        mainActivityDataBinder.showError("Server Error")
                     }
                 } else {
                     mainActivityDataBinder.showProgress()

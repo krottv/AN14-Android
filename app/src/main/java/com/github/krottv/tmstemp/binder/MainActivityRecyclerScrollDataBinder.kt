@@ -4,12 +4,14 @@ import android.app.Activity
 import android.transition.*
 import android.view.LayoutInflater
 import android.widget.TextView
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.databinding.ActivityMainBinding
 import com.github.krottv.tmstemp.domain.Message
 import com.github.krottv.tmstemp.view.MessageAdapter
+
 
 class MainActivityRecyclerScrollDataBinder(private val activity: Activity): MainActivityDataBinder {
 
@@ -47,14 +49,14 @@ class MainActivityRecyclerScrollDataBinder(private val activity: Activity): Main
         }
     }
 
-    fun showError() {
+    fun showError(massage: String) {
 
         val scene = Scene.getSceneForLayout(container.container, R.layout.show_error, activity)
 
         TransitionManager.go(scene, customTransition)
 
         container.container.findViewById<TextView>(R.id.errorText).apply {
-            text = "Server Error"
+            text = massage
         }
     }
 
@@ -65,7 +67,13 @@ class MainActivityRecyclerScrollDataBinder(private val activity: Activity): Main
 
     private fun removeOne() {
         val element = (container.container.findViewById<RecyclerView>(R.id.recycler).adapter as MessageAdapter)
-        element.data = element.data.subList(1, element.itemCount)
-        element.notifyItemRemoved(0)
+        if (element.itemCount > 0) {
+            element.data = element.data.subList(1, element.itemCount)
+            element.notifyItemRemoved(0)
+            container.container.findViewById<RecyclerView>(R.id.recycler).itemAnimator = object : DefaultItemAnimator() {}
+        }
+        else {
+            showError("NullPointer Error")
+        }
     }
 }

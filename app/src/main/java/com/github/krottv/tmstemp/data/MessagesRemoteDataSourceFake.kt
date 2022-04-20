@@ -12,8 +12,8 @@ class MessagesRemoteDataSourceFake: MessagesRemoteDataSource {
             "Пункт такойто",
             "Какой-то текст Какой-то текст Какой-то текст Какой-то текст"
         )
-        val result = ArrayList<Message>(200)
-        for (i in 0..200) {
+        val result = ArrayList<Message>(20)
+        for (i in 0..20) {
             result.add(message.copy(mainText = "Пункт $i"))
         }
         return result
