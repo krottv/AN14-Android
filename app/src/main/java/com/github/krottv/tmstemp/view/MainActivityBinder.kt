@@ -2,32 +2,33 @@ package com.github.krottv.tmstemp.view
 
 import android.app.Activity
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.*
 import androidx.transition.Scene
+import androidx.transition.TransitionManager
 import com.github.krottv.tmstemp.R
+import com.github.krottv.tmstemp.databinding.ActivityMainBinding
+import com.github.krottv.tmstemp.databinding.PostsSceneBinding
 import com.github.krottv.tmstemp.domain.PostModel
 
 class MainActivityBinder(val activity: Activity) {
 
     private lateinit var binding: RecyclerView
-
+    private lateinit var rootScene: ActivityMainBinding
+    private lateinit var loadScene: Scene
+    private lateinit var postsScene: Scene
 
     fun bindView() {
-        //var sceneRoot = Scene(activity.findViewById<ViewGroup>(R.id.scene_root))
 
-        binding = activity.findViewById(R.id.recyclerView)
-        //activity.setContentView(R.layout.activity_main)
+        rootScene = ActivityMainBinding.inflate(LayoutInflater.from(activity))
+        activity.setContentView(rootScene.root)
 
-        //val postsScene = Scene.getSceneForLayout(sceneRoot, R.layout.posts_scene, activity)
-        //postsScene.enter()
-
-        val layoutManger = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-
-        binding.layoutManager = layoutManger
+        launchLoadScene()
 
         activity.findViewById<TextView>(R.id.buttonDelete)
             .setOnClickListener {
@@ -35,19 +36,37 @@ class MainActivityBinder(val activity: Activity) {
             }
     }
 
+    private fun launchLoadScene() {
+        loadScene = Scene.getSceneForLayout(rootScene.sceneRoot, R.layout.load_scene, activity)
+        TransitionManager.go(loadScene)
+    }
+
+    fun launchPostsScene() {
+        postsScene = Scene.getSceneForLayout(rootScene.sceneRoot, R.layout.posts_scene, activity)
+        TransitionManager.go(postsScene)
+        binding = rootScene.sceneRoot.findViewById(R.id.recyclerView)
+
+        val layoutManger = LinearLayoutManager(activity, VERTICAL, false)
+
+        binding.layoutManager = layoutManger
+    }
+
+    fun launchErrorScene(e: Throwable) {
+        val errorScene =
+            Scene.getSceneForLayout(rootScene.sceneRoot, R.layout.error_scene, activity)
+
+        TransitionManager.go(errorScene)
+
+        val error = rootScene.sceneRoot.findViewById<TextView>(R.id.error)
+
+        error.text = e.message
+    }
 
     fun onDataLoaded(list: List<PostModel>) {
         if (binding.adapter == null) {
-
-            Log.i("myi", "load1")
-
             binding.adapter = PostsAdapter(list)
         } else {
-            Log.i("myi", "load2")
             (binding.adapter as PostsAdapter).data = list as MutableList<PostModel>
         }
-
     }
-
-
 }

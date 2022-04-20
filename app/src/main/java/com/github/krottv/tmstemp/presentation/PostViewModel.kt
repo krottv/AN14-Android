@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.krottv.tmstemp.domain.PostModel
 import com.github.krottv.tmstemp.data.PostsRemoteDataSource
 import com.github.krottv.tmstemp.data.PostsRemoteDataSourceFake
+import com.github.krottv.tmstemp.data.PostsRemoteDataSourceFakeError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
