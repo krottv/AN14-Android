@@ -6,6 +6,6 @@ import kotlinx.coroutines.delay
 class PostRemoteDataSourceFakeError :PostRemoteDataSource{
     override suspend fun getPosts(): List<PostModel> {
         delay(4000L)
-       throw IllegalStateException("Server error")
+        throw IllegalStateException("Server error")
     }
 }

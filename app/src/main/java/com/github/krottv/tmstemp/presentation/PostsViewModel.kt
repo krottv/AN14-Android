@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class PostsViewModel : ViewModel() {
 
-   private val postRemoteDataSource: PostRemoteDataSource = PostRemoteDataSourceFake()
+    private val postRemoteDataSource: PostRemoteDataSource = PostRemoteDataSourceFake()
 
     private val _state = MutableStateFlow<Result<List<PostModel>>?>(null)
     val state: StateFlow<Result<List<PostModel>>?> = _state
@@ -25,7 +25,6 @@ class PostsViewModel : ViewModel() {
             } catch (t: Throwable) {
                 Result.failure(t)
             }
-
             _state.emit(result)
         }
 
