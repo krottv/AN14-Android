@@ -17,13 +17,13 @@ class MainActivityBinder(val activity: Activity) {
 
 
     fun bindView() {
-        var sceneRoot = Scene(activity.findViewById<ViewGroup>(R.id.scene_root))
+        //var sceneRoot = Scene(activity.findViewById<ViewGroup>(R.id.scene_root))
 
         binding = activity.findViewById(R.id.recyclerView)
-        activity.setContentView(R.layout.activity_main)
+        //activity.setContentView(R.layout.activity_main)
 
-        val postsScene = Scene.getSceneForLayout(sceneRoot, R.layout.posts_scene, activity)
-        postsScene.enter()
+        //val postsScene = Scene.getSceneForLayout(sceneRoot, R.layout.posts_scene, activity)
+        //postsScene.enter()
 
         val layoutManger = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
@@ -34,6 +34,7 @@ class MainActivityBinder(val activity: Activity) {
                 (binding.adapter as PostsAdapter).removeFirstItem()
             }
     }
+
 
     fun onDataLoaded(list: List<PostModel>) {
         if (binding.adapter == null) {
