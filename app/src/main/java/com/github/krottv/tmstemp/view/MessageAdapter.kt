@@ -2,6 +2,8 @@ package com.github.krottv.tmstemp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.krottv.tmstemp.R
@@ -16,13 +18,26 @@ class MessageAdapter(var data: List<Message>): RecyclerView.Adapter<MessageViewH
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val cell = data[position]
-        holder.mainImage.load(cell.mainImage)
-        holder.littleImage.load(cell.littleImage)
+        holder.mainImage.apply {
+            load(cell.mainImage)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+        }
+        holder.littleImage.apply {
+            load(cell.littleImage)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+        }
         holder.mainText.text = cell.mainText
         holder.littleText.text = cell.littleText
     }
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    fun removeOne() {
+        if (itemCount > 0) {
+            data = data.subList(1, itemCount)
+            notifyItemRemoved(0)
+        }
     }
 }

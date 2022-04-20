@@ -7,6 +7,6 @@ import java.lang.IllegalStateException
 class MessagesRemoteDataSourceError: MessagesRemoteDataSource {
     override suspend fun getMessages(): List<Message> {
         delay(2000)
-        throw IllegalStateException()
+        throw IllegalStateException("IllegalStateException")
     }
 }

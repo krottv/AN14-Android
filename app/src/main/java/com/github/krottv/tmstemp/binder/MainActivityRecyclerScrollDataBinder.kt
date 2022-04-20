@@ -11,6 +11,7 @@ import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.databinding.ActivityMainBinding
 import com.github.krottv.tmstemp.domain.Message
 import com.github.krottv.tmstemp.view.MessageAdapter
+import java.lang.Exception
 
 
 class MainActivityRecyclerScrollDataBinder(private val activity: Activity): MainActivityDataBinder {
@@ -49,14 +50,14 @@ class MainActivityRecyclerScrollDataBinder(private val activity: Activity): Main
         }
     }
 
-    fun showError(massage: String) {
+    fun showError(exception: Throwable) {
 
         val scene = Scene.getSceneForLayout(container.container, R.layout.show_error, activity)
 
         TransitionManager.go(scene, customTransition)
 
         container.container.findViewById<TextView>(R.id.errorText).apply {
-            text = massage
+            text = exception.message
         }
     }
 
@@ -66,14 +67,8 @@ class MainActivityRecyclerScrollDataBinder(private val activity: Activity): Main
     }
 
     private fun removeOne() {
-        val element = (container.container.findViewById<RecyclerView>(R.id.recycler).adapter as MessageAdapter)
-        if (element.itemCount > 0) {
-            element.data = element.data.subList(1, element.itemCount)
-            element.notifyItemRemoved(0)
-            container.container.findViewById<RecyclerView>(R.id.recycler).itemAnimator = object : DefaultItemAnimator() {}
-        }
-        else {
-            showError("NullPointer Error")
-        }
+        val recycler = container.container.findViewById<RecyclerView>(R.id.recycler)
+            (recycler.adapter as MessageAdapter).removeOne()
+            recycler.itemAnimator = object : DefaultItemAnimator() {}
     }
 }

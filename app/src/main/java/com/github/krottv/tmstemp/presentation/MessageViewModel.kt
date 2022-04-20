@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MessageViewModel: ViewModel() {
-    private val fakeMessages: MessagesRemoteDataSource = MessagesRemoteDataSourceFake()
+    private val fakeMessages: MessagesRemoteDataSource = MessagesRemoteDataSourceError()
 
     private val _state = MutableStateFlow<Result<List<Message>>?>(null)
     val state: StateFlow<Result<List<Message>>?> = _state

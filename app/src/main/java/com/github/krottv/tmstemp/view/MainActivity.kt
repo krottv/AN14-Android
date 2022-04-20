@@ -8,6 +8,7 @@ import com.github.krottv.tmstemp.binder.MainActivityDataBinder
 import com.github.krottv.tmstemp.binder.MainActivityRecyclerScrollDataBinder
 import com.github.krottv.tmstemp.presentation.MessageViewModel
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                     if (it.isSuccess) {
                         mainActivityDataBinder.onDataLoaded(it.getOrThrow())
                     } else {
-                        mainActivityDataBinder.showError("Server Error")
+                        mainActivityDataBinder.showError(it.exceptionOrNull() as Throwable)
                     }
                 } else {
                     mainActivityDataBinder.showProgress()
