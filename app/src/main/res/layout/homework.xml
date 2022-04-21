@@ -82,7 +82,9 @@
         android:id="@+id/seekBarFirstChange"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="22dp"
+        android:layout_marginEnd="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstChange" />
@@ -109,6 +111,8 @@
         android:id="@+id/seekBarSecondChange"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="21dp"
         app:layout_constraintBottom_toTopOf="@+id/guidelinePicture"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,9 +130,10 @@
         android:id="@+id/imageViewInternetPicture"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginStart="22dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelinePicture"
         tools:ignore="MissingConstraints,ImageContrastCheck"
-        tools:layout_editor_absoluteX="35dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -169,12 +174,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineBlack"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/color"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/move"
@@ -186,8 +192,8 @@
 
     <ImageView
         android:id="@+id/move"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/trim"
         app:layout_constraintHorizontal_bias="0.5"
@@ -198,8 +204,8 @@
 
     <ImageView
         android:id="@+id/trim"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/volume"
         app:layout_constraintHorizontal_bias="0.5"
@@ -210,10 +216,9 @@
 
     <ImageView
         android:id="@+id/volume"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
