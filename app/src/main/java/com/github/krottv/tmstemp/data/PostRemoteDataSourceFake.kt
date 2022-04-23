@@ -11,14 +11,14 @@ class PostRemoteDataSourceFake : PostRemoteDataSource {
         val model = PostModel(
             "https://images.unsplash.com/photo-1575439047055-83e6174df3b9?ixlib=rb-1.2.1&ixi" +
                     "d=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=470&q=80",
-            "Some title",
+            "Item -",
             "Aenean turpis nibh, mattis at erat vitae, consequat sagittis nisi.",
             "https://images.unsplash.com/photo-1575439047055-83e6174df3b9?ixlib=rb-1.2.1&ixi" +
                     "d=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=470&q=80"
         )
         val mutableListOf = ArrayList<PostModel>(1000)
         for (i in 0..1000) {
-            mutableListOf.add(model.copy())
+            mutableListOf.add(model.copy(title = "${model.title} $i"))
         }
         return mutableListOf
 

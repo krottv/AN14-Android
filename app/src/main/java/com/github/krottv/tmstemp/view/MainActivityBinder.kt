@@ -1,40 +1,66 @@
 package com.github.krottv.tmstemp.view
 
 import android.app.Activity
-import android.os.Message
 import android.view.LayoutInflater
-import android.view.View
-import androidx.core.app.NotificationCompat
+import android.widget.TextView
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.*
+import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.databinding.ActivityMainBinding
 import com.github.krottv.tmstemp.domain.PostModel
-import okhttp3.internal.notify
 
-class MainActivityBinder(val activity: Activity) {
-    lateinit var binding: ActivityMainBinding
-    fun bindView() {
-        binding = ActivityMainBinding.inflate(LayoutInflater.from(activity))
-        val layoutManager = LinearLayoutManager(activity)
-        activity.setContentView(binding.root)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.textViewDelete.text
 
+class MainActivityBinder(private val activity: Activity) : MainActivityDataBinder {
+    private lateinit var container: ActivityMainBinding
+
+    override fun bind() {
+        container = ActivityMainBinding.inflate(LayoutInflater.from(activity))
+        activity.setContentView(container.root)
     }
 
-    fun applyAdapter(list: MutableList<PostModel>) {
-        binding.progressBar.visibility = View.GONE
-        binding.recyclerView.visibility = View.VISIBLE
-        View.VISIBLE.also { binding.textViewDelete.visibility = it }
-        binding.recyclerView.adapter = PostAdapter(list)
-        binding.textViewDelete.setOnClickListener {
+    fun dataLoaded(data: List<PostModel>) {
 
+        val scene = Scene.getSceneForLayout(container.container, R.layout.recycler_view, activity)
+        scene.setEnterAction {
+            container.container.findViewById<TextView>(R.id.textViewDelete).setOnClickListener {
+                removeOne()
+            }
+        }
+        TransitionManager.go(scene)
+
+        val recyclerView = container.container.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+
+
+        if (recyclerView.adapter == null) {
+            recyclerView.adapter = PostsAdapter(data)
+        } else {
+            (recyclerView.adapter as PostsAdapter).data = data as MutableList<PostModel>
         }
     }
 
-    fun showProgress() {
-        binding.progressBar.visibility = View.VISIBLE
-        binding.recyclerView.visibility = View.GONE
-        binding.textViewDelete.visibility = View.GONE
+    fun showError(exception: Throwable) {
+
+        val scene = Scene.getSceneForLayout(container.container, R.layout.error, activity)
+
+        TransitionManager.go(scene)
+        container.container.findViewById<TextView>(R.id.textViewError).apply {
+            text = exception.message
+        }
     }
 
+    fun showProgressBar() {
+        val scene = Scene.getSceneForLayout(container.container, R.layout.progrees_bar, activity)
+        TransitionManager.go(scene)
+    }
+
+    private fun removeOne() {
+        val recycler = container.container.findViewById<RecyclerView>(R.id.recyclerView)
+        (recycler.adapter as PostsAdapter).removeOne()
+        recycler.itemAnimator = object : DefaultItemAnimator() {}
+    }
 }
+
+

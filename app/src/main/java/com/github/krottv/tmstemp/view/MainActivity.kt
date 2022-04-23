@@ -4,35 +4,35 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.github.krottv.tmstemp.domain.PostModel
-import com.github.krottv.tmstemp.presentation.PostsViewModel
+import com.github.krottv.tmstemp.presentation.PostViewModel
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
-    lateinit var binder: MainActivityBinder
-    lateinit var viewModel: PostsViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        lateinit var mainActivityDataBinder: MainActivityDataBinder
+
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[PostsViewModel::class.java]
+        mainActivityDataBinder = MainActivityBinder(this)
+        mainActivityDataBinder.bind()
 
-        binder = MainActivityBinder(this)
-        binder.bindView()
+        val viewModel: PostViewModel = ViewModelProvider(this)[PostViewModel::class.java]
 
         viewModel.loadData()
-        lifecycleScope.launchWhenStarted {
+
+        lifecycleScope.launch {
             viewModel.state.collect {
                 if (it != null) {
-
                     if (it.isSuccess) {
-                        binder.applyAdapter(it.getOrThrow() as MutableList<PostModel>)
+                        mainActivityDataBinder.dataLoaded(it.getOrThrow())
+                    } else {
+                        mainActivityDataBinder.showError(it.exceptionOrNull() as Throwable)
                     }
                 } else {
-                    binder.showProgress()
+                    mainActivityDataBinder.showProgressBar()
                 }
             }
         }
-
     }
 }

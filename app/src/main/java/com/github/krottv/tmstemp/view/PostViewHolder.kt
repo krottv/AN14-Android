@@ -12,7 +12,4 @@ class PostViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imageMini: ImageView = view.findViewById(R.id.imageViewMini)
     val textView: TextView = view.findViewById(R.id.textTitle)
     val textViewSub: TextView = view.findViewById(R.id.textSubtitle)
-    //val textViewDelete:TextView = view.findViewById(R.id.textViewDelete)
-
-
 }
