@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/drawable/close.xml" value="0.139" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/drawable/ic_close.xml" value="0.139" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/drawable/ic_color.xml" value="0.1485" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/drawable/ic_move_icon.xml" value="0.1485" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/error_scene.xml" value="0.1452991452991453" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/first_scene.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/fullscreen_post_fragment.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/item_post.xml" value="0.33" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/load_scene.xml" value="0.1452991452991453" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/main_activity.xml" value="0.2540084388185654" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/main_single_button.xml" value="0.22" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/posts_fragment.xml" value="0.14" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/posts_scene.xml" value="0.1452991452991453" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/second_paragraph.xml" value="0.22" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/layout/second_paragraph_scene_first.xml" value="0.25" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
+        <entry key="..\:/Users/Nikolay/AndroidStudioProjects/AN14-Android-1/AN14-Android-1/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
