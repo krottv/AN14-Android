@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fullscreenFragment">
+
+
+    <fragment
+        android:id="@+id/fullscreenFragment"
+        android:name="com.github.krottv.tmstemp.FullscreenFragment"
+        android:label="FullscreenFragment"
+        tools:layout="@layout/messages_fragment">
+        <action
+            android:id="@+id/action_fullscreenFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.github.krottv.tmstemp.RecyclerFragment"
+        android:label="RecyclerFragment"
+        tools:layout="@layout/fullscreen_message"/>
+</navigation>

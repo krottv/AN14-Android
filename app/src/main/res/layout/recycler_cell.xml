@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp">
+
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/mainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:text="Пункт такойто"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/littleText"
+        app:layout_constraintStart_toEndOf="@+id/mainImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/littleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="46dp"
+        android:text="Какой-то текст Какой-то текст Какой-то текст Какой-то текст"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainImage"
+        app:layout_constraintEnd_toStartOf="@+id/littleImage"
+        app:layout_constraintStart_toEndOf="@+id/mainImage"
+        app:layout_constraintTop_toBottomOf="@+id/mainText" />
+
+    <ImageView
+        android:id="@+id/littleImage"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainImage"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
