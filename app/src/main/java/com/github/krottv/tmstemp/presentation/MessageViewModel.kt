@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.krottv.tmstemp.data.MessagesRemoteDataSource
 import com.github.krottv.tmstemp.data.MessagesRemoteDataSourceError
 import com.github.krottv.tmstemp.data.MessagesRemoteDataSourceFake
-import com.github.krottv.tmstemp.domain.Message
+import com.github.krottv.tmstemp.domain.MessageModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 class MessageViewModel: ViewModel() {
     private val fakeMessages: MessagesRemoteDataSource = MessagesRemoteDataSourceFake()
 
-    private val _state = MutableStateFlow<Result<List<Message>>?>(null)
-    val state: StateFlow<Result<List<Message>>?> = _state
+    private val _state = MutableStateFlow<Result<List<MessageModel>>?>(null)
+    val state: StateFlow<Result<List<MessageModel>>?> = _state
 
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {

@@ -3,21 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fullscreenFragment">
+    app:startDestination="@id/recyclerFragment">
 
 
     <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.github.krottv.tmstemp.view.RecyclerFragment"
+        android:label="RecyclerFragment"
+        tools:layout="@layout/scene_container">
+        <action
+            android:id="@+id/action_recyclerFragment_to_fullscreenFragment"
+            app:destination="@id/fullscreenFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/fullscreenFragment"
-        android:name="com.github.krottv.tmstemp.FullscreenFragment"
+        android:name="com.github.krottv.tmstemp.view.FullscreenFragment"
         android:label="FullscreenFragment"
-        tools:layout="@layout/messages_fragment">
+        tools:layout="@layout/fullscreen_message">
+        <argument
+            android:name="currentMessage"
+            app:argType="com.github.krottv.tmstemp.domain.MessageModel" />
         <action
             android:id="@+id/action_fullscreenFragment_to_recyclerFragment"
             app:destination="@id/recyclerFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/recyclerFragment"
-        android:name="com.github.krottv.tmstemp.RecyclerFragment"
-        android:label="RecyclerFragment"
-        tools:layout="@layout/fullscreen_message"/>
 </navigation>

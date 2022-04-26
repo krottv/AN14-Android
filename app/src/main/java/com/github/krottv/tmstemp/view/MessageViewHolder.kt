@@ -8,7 +8,6 @@ import com.github.krottv.tmstemp.R
 
 class MessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
     val mainImage: ImageView = view.findViewById(R.id.mainImage)
-    val littleImage: ImageView = view.findViewById(R.id.littleImage)
     val mainText: TextView = view.findViewById(R.id.mainText)
     val littleText: TextView = view.findViewById(R.id.littleText)
 }
