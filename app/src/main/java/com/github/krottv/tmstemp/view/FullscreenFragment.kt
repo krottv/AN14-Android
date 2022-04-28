@@ -55,12 +55,7 @@ class FullscreenFragment: Fragment() {
         binding.mainText.apply {
             text = item.mainText
             setOnClickListener {
-                val navController = findNavController()
-
-                val action = FullscreenFragmentDirections.actionFullscreenFragmentToRecyclerFragment()
-                val extras = FragmentNavigatorExtras(view to RecyclerFragment.TRANSITION_ID)
-
-                navController.navigate(action, extras)
+                findNavController().navigateUp()
             }
         }
     }

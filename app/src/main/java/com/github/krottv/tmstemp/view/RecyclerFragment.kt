@@ -17,10 +17,6 @@ import java.util.concurrent.TimeUnit
 
 class RecyclerFragment: Fragment() {
 
-    companion object {
-        const val TRANSITION_ID = "RecyclerView"
-    }
-
     private lateinit var fragment: RecyclerFragmentBinder
     private lateinit var viewModel: MessageViewModel
 
@@ -42,8 +38,6 @@ class RecyclerFragment: Fragment() {
 
             navController.navigate(action, extras)
         }
-
-        fragment.bindView(inflater, container, savedInstanceState).transitionName = TRANSITION_ID
 
         return fragment.bindView(inflater, container, savedInstanceState)
     }
