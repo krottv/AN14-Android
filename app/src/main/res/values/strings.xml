@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TmsTemp</string>
+    <string name="textview3">TextView</string>
+    <string name="textview4">TextView</string>
 </resources>
