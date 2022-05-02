@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
                 val minSize = 9
                 val maxSize = 50
                 val newSize = ((maxSize - minSize) * (progress / seekBar.max.toFloat())) + minSize
-                layuot.textView2.textSize = newSize
+                layuot.textView.textSize = newSize
 
             }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 val minSize = 9
                 val maxSize = 50
                 val newSize = ((maxSize - minSize) * (progress / seekBar.max.toFloat())) + minSize
-                layuot.textView.textSize = newSize
+                layuot.textView2.textSize = newSize
 
             }
 
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
-        layuot.imageView2.load("https://images.unsplash.com/photo-1505062351414-586330b076f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1080&q=80") {
+        layuot.imageView7.load("https://images.unsplash.com/photo-1505062351414-586330b076f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1080&q=80") {
             transformations(CircleCropTransformation())
             layuot.seekBar.progress = 0
             layuot.seekBar2.progress = 0
