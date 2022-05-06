@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">TmsTemp</string>
+    <string name="app_name">First Task TMS</string>
+    <string name="name_of_student_1">John</string>
+    <string name="name_of_student_2">Mike</string>
+    <string name="name_of_student_3">Brad</string>
+    <string name="name_of_student_4">Nick</string>
+    <string name="name_of_student_5">Bob</string>
+    <string name="name_of_student_6">Tim</string>
+    <string name="name_of_student_7">Corey</string>
+    <string name="name_of_student_8">Eric</string>
+    <string name="name_of_student_9">Hanna</string>
+    <string name="name_of_student_10">Jim</string>
+    <string name="next_button">Next</string>
+    <string name="transform_button">TRANSFORM</string>
+    <string name="no_message">Wtf?</string>
+    <string name="transform_message">Transformed_</string>
+    <string name="already_transformed_toast">Already transformed.</string>
 </resources>
