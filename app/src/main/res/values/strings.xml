@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TmsTemp</string>
+    <string name="app_name">frthtask</string>
+    <string name="some_txt">Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст</string>
+    <string name="m_txt_1">Первый пункт</string>
+    <string name="m_txt_2">Второй пункт</string>
+    <string name="m_txt_3">Третий пункт</string>
 </resources>
