@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TmsTemp</string>
+    <string name="SomeText">Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст Какой-то текст</string>
+    <string name="close_window">ЗАКРЫТЬ ОКНО</string>
+    <string name="SomeText2">Какой-то текст Какой-то текст Какой-то текст Какой-то текст</string>
+    <string name="User">Пользователь</string>
 </resources>
