@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp
+package com.github.krottv.tmstemp.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment
 
 class HostFragment : Fragment() {
 
+    lateinit var viewBinder: HostFragmentBinder
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        viewBinder = HostFragmentBinder(this)
+
+        return viewBinder.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
