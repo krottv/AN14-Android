@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TmsTemp</string>
+    <string name="app_name">ffthtask</string>
+    <string name="subtxt">Какой-то текст Какой-то текст Какой-то текст Какой-то текст </string>
+    <string name="delete_one">Delete one</string>
 </resources>
