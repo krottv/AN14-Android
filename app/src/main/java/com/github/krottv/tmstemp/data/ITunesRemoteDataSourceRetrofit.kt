@@ -10,26 +10,26 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.create
 
-class ITunesRemoteDataSourceRetrofit : ITunesMusicApi {
+class ITunesRemoteDataSourceRetrofit : MusicApi {
 
-    override suspend fun getITunesAlbums(): List<AlbumModel> {
+    override suspend fun getAlbums(): List<AlbumModel> {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://us-central1-inspiry-2ee60.cloudfunctions.net/getItunesAlbums/")
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
 
-        val musicApi: ITunesMusicApi = retrofit.create()
-        return musicApi.getITunesAlbums()
+        val musicApi: MusicApi = retrofit.create()
+        return musicApi.getAlbums()
     }
 
-    override suspend fun getITunesTracks(albumId: Long): TracksModel {
+    override suspend fun getTracks(albumId: Long): TracksModel {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://us-central1-inspiry-2ee60.cloudfunctions.net/getItunesTracks/")
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
 
-        val musicApi: ITunesMusicApi = retrofit.create()
+        val musicApi: MusicApi = retrofit.create()
 
-        return musicApi.getITunesTracks(1)
+        return musicApi.getTracks(1)
     }
 }

@@ -1,7 +1,6 @@
 package com.github.krottv.tmstemp.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,25 +13,24 @@ import androidx.navigation.fragment.findNavController
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.data.ITunesRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
-import com.github.krottv.tmstemp.presentation.TracksITunesViewModel
+import com.github.krottv.tmstemp.presentation.TracksViewModel
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class ITunesMusicFragment : Fragment() {
+
     lateinit var viewBinder: ITunesMusicFragmentBinder
-    var viewModel: AlbumsViewModel = AlbumsViewModel(ITunesRemoteDataSourceRetrofit())
-    var tracksITunesViewModel: TracksITunesViewModel = TracksITunesViewModel(
-        ITunesRemoteDataSourceRetrofit()
-    )
+    private val viewModel: AlbumsViewModel by inject()
+    private val tracksITunesViewModel: TracksViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewBinder = ITunesMusicFragmentBinder(this)
-        val currentView: View = viewBinder.onCreateView(inflater, container, savedInstanceState)
 
-        return currentView
+        return viewBinder.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +46,7 @@ class ITunesMusicFragment : Fragment() {
                 navController.navigate(action)
             }
 
-        viewModel.loadDataITunes()
+        viewModel.loadData()
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -58,7 +56,7 @@ class ITunesMusicFragment : Fragment() {
             }
         }
 
-        tracksITunesViewModel.loadTracksITunes()
+        tracksITunesViewModel.loadTracks()
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
