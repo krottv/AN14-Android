@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun registerReceiver() {
-        val intentFilter = IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        val intentFilter = IntentFilter(Intent.ACTION_POWER_CONNECTED)
         registerReceiver(broadcastReceiever, intentFilter)
     }
 

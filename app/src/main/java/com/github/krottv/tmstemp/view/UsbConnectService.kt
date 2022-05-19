@@ -24,10 +24,11 @@ class UsbConnectService : Service() {
     override fun onCreate() {
         super.onCreate()
 
-        startForeground(10, downloadNotification())
+
 
         runBlocking {
-            launch{
+            launch {
+                startForeground(10, downloadNotification())
                 loadDataFake()
                 stopSelf()
                 downloadDoneNotification()
@@ -41,21 +42,22 @@ class UsbConnectService : Service() {
 
     private suspend fun loadDataFake() {
 
-        for (i in 1..10)
-        {
-            createNotificationChannel()
+        createNotificationChannel()
 
-            Log.i("test", "Done")
+        for (i in 1..100) {
+
+            //Log.i("test", "Done")
             val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Download")
 
-                .setProgress(10, i, false)
+                .setProgress(100, i, false)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
 
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.notify(10, builder.build())
-            delay(1000)
+            delay(100)
         }
 
 
@@ -84,12 +86,13 @@ class UsbConnectService : Service() {
             .setContentText("Done")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(2, builder.build())
     }
 
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Localized Name"
             val descriptionText = "Localized Description"
             val importance = NotificationManager.IMPORTANCE_HIGH
@@ -97,7 +100,8 @@ class UsbConnectService : Service() {
                 description = descriptionText
             }
 
-            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
