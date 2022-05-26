@@ -22,10 +22,9 @@ class ChargeModeService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        startForeground(10, foregroundNotification())
-
         runBlocking {
             launch {
+                startForeground(10, foregroundNotification())
                 fakeLoad()
                 stopSelf()
                 downloadDoneNotification()
@@ -37,10 +36,11 @@ class ChargeModeService : Service() {
 
         createNotificationChannel()
 
+        for (progress in 1..100) {
             val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Loading...")
-                .setProgress(100, 10, true)
+                .setProgress(100, progress, false)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
 
             val notificationManager =
@@ -48,7 +48,8 @@ class ChargeModeService : Service() {
 
             notificationManager.notify(10, builder.build())
 
-        delay(10000)
+            delay(100)
+        }
     }
 
     private fun downloadDoneNotification() {
