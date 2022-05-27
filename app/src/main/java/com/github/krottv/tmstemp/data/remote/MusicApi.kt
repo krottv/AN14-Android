@@ -24,13 +24,13 @@ interface MusicApi {
     suspend fun getItunesAlbums() : List<AlbumModel>
 
     @GET("getItunesTracks")
-    suspend fun getItunesSongs(@Query("albumId") album_id: Long) : SongsJSON
+    suspend fun getItunesSongs(@Query("albumId") albumId: Long) : SongsJSON
 
     @GET("getLibraryAlbums")
     suspend fun getLibraryAlbums() : List<AlbumModel>
 
     @GET("getLibraryTracks")
-    suspend fun getLibrarySongs(@Query("albumId") album_id: Long) : SongsJSON
+    suspend fun getLibrarySongs(@Query("albumId") albumId: Long) : SongsJSON
 }
 
 

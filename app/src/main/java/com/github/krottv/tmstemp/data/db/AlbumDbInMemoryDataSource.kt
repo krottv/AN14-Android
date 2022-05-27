@@ -15,7 +15,7 @@ class AlbumDbInMemoryDataSource : AlbumDbDataSource {
         }
     }
 
-    override suspend fun getAlbums(contentType: ContentType): Map<ContentType, List<AlbumModel>>? {
+    override suspend fun getAlbums(): Map<ContentType, List<AlbumModel>>? {
         return inMemoryData1
     }
 }

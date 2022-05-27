@@ -5,5 +5,5 @@ import com.github.krottv.tmstemp.domain.ContentType
 
 interface AlbumDbDataSource {
     suspend fun saveAlbums(contentType: ContentType, list: List<AlbumModel>)
-    suspend fun getAlbums(contentType: ContentType): Map<ContentType, List<AlbumModel>>?
+    suspend fun getAlbums(): Map<ContentType, List<AlbumModel>>?
 }

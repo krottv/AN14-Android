@@ -14,23 +14,24 @@ import com.github.krottv.tmstemp.data.remote.SongRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.presentation.AlbumViewModel
 import com.github.krottv.tmstemp.presentation.SongViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 class MyApp : Application() {
 
     private val moduleRepository: Module
         get() = module {
-            factory { AlbumsRepository(get(), get()) }
-            factory { SongsRepository(get(), get(), get()) }
-            factory<SongDbDataSource> { SongDbInMemoryDataSource() }
-            factory<SongRemoteDataSource> { SongRemoteDataSourceRetrofit() }
-            factory<AlbumDbDataSource> { AlbumDbInMemoryDataSource() }
-            factory<AlbumRemoteDataSource> { AlbumRemoteDataSourceRetrofit() }
-            viewModel { AlbumViewModel(get()) }
-            viewModel { SongViewModel(get()) }
+            factoryOf(::AlbumsRepository)
+            factoryOf(::SongsRepository)
+            factoryOf<SongDbDataSource>(::SongDbInMemoryDataSource)
+            factoryOf<SongRemoteDataSource>(::SongRemoteDataSourceRetrofit)
+            factoryOf<AlbumDbDataSource>(::AlbumDbInMemoryDataSource)
+            factoryOf<AlbumRemoteDataSource>(::AlbumRemoteDataSourceRetrofit)
+            viewModelOf(::AlbumViewModel)
+            viewModelOf(::SongViewModel)
         }
 
     override fun onCreate() {

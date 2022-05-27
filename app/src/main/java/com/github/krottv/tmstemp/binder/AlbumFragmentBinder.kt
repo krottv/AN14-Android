@@ -29,7 +29,6 @@ class AlbumFragmentBinder(private val fragment: Fragment, private val onItemClic
     fun onDataLoaded(data: List<AlbumModel>) {
 
         val recyclerView = binding.root.findViewById<RecyclerView>(R.id.container)
-        recyclerView.visibility = View.VISIBLE
 
         recyclerView.layoutManager = LinearLayoutManager(fragment.requireContext(), RecyclerView.HORIZONTAL, false)
 
