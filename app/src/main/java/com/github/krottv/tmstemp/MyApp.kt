@@ -1,10 +1,7 @@
 package com.github.krottv.tmstemp
 
 import android.app.Application
-import com.github.krottv.tmstemp.data.remote.ITunesRemoteDataSourceRetrofit
-import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
-import com.github.krottv.tmstemp.data.remote.MusicApi
-import com.github.krottv.tmstemp.data.remote.MyMusicRemoteDataSourceRetrofit
+import com.github.krottv.tmstemp.data.remote.*
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
 import com.github.krottv.tmstemp.presentation.MyMusicViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel

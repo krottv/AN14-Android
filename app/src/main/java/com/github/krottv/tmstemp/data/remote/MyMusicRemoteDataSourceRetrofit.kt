@@ -8,7 +8,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.create
 
-class MyMusicRemoteDataSourceRetrofit: MusicApi {
+class MyMusicRemoteDataSourceRetrofit : MusicApi {
 
     override suspend fun getAlbums(): List<AlbumModel> {
         val retrofit = Retrofit.Builder()

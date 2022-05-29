@@ -51,6 +51,7 @@ class ITunesMusicFragment : Fragment() {
                 val action =
                     ITunesMusicFragmentDirections.actionITunesMusicFragmentToLibraryMusicFragment()
                 navController.navigate(action.actionId)
+
             }
         viewModel.loadData()
 
