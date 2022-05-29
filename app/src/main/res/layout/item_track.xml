@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="19dp"
-        android:textColor="#BDBDBD"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/grey"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageTrack"
@@ -35,7 +35,8 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="2dp"
         android:textColor="#F2F2F2"
-        android:textSize="11sp"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/imageTrack"
-        app:layout_constraintTop_toBottomOf="@+id/titleTrack" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTrack"
+        tools:ignore="SmallSp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

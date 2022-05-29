@@ -8,6 +8,7 @@ import com.github.krottv.tmstemp.databinding.ItunesMusicFragmentBinding
 import com.github.krottv.tmstemp.domain.AlbumModel
 import com.github.krottv.tmstemp.domain.TracksModel
 
+
 class ITunesMusicFragmentBinder(val fragment: ITunesMusicFragment) {
 
     lateinit var binding: ItunesMusicFragmentBinding

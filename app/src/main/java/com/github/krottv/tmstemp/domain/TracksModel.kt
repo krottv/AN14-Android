@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TracksModel(
-    var album: Album,
-    var tracks: ArrayList<Tracks>
+    val album: Album,
+    val tracks: List<Tracks>
 )

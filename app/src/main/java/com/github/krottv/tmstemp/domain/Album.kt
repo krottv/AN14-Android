@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Album(
-    var id: Int,
-    var image: String,
-    var name: String,
-    var trackCount: Int
+    val id: Int,
+    val image: String,
+    val name: String,
+    val trackCount: Int
 )

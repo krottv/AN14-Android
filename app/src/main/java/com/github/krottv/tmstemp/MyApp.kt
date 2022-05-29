@@ -4,7 +4,9 @@ import android.app.Application
 import com.github.krottv.tmstemp.data.remote.ITunesRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.data.remote.MusicApi
+import com.github.krottv.tmstemp.data.remote.MyMusicRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
+import com.github.krottv.tmstemp.presentation.MyMusicViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,21 +20,29 @@ class MyApp : Application() {
         get() = module {
             factory<MusicApi> { ITunesRemoteDataSourceRetrofit() }
         }
+
     private val libraryModule: Module
         get() = module {
             factory<MusicApi> { LibraryRemoteDataSourceRetrofit() }
         }
+
+    private val myMusicModule: Module
+        get() = module {
+            factory<MusicApi> { MyMusicRemoteDataSourceRetrofit() }
+        }
+
     private val viewModelModule: Module
         get() = module {
             viewModel { AlbumsViewModel(get()) }
             viewModel { TracksViewModel(get()) }
+            viewModel { MyMusicViewModel(get()) }
         }
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidContext(this@MyApp)
-            modules(libraryModule, itunesModule, viewModelModule)
+            modules(libraryModule, itunesModule, viewModelModule, myMusicModule)
         }
     }
 }

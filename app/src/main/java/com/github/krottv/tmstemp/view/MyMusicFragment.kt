@@ -12,22 +12,28 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
+import com.github.krottv.tmstemp.data.remote.MyMusicRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
+import com.github.krottv.tmstemp.presentation.MyMusicViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
-class LibraryMusicFragment : Fragment() {
-    lateinit var viewBinder: LibraryMusicFragmentBinder
-    private val viewModel: AlbumsViewModel = AlbumsViewModel(LibraryRemoteDataSourceRetrofit())
-    private val tracksLibraryViewModel: TracksViewModel =
-        TracksViewModel(LibraryRemoteDataSourceRetrofit())
+class MyMusicFragment : Fragment() {
+
+    lateinit var viewBinder: MyMusicFragmentBinder
+    private val viewModel: AlbumsViewModel by inject()
+    private val myMusicViewModel: TracksViewModel =
+        TracksViewModel(MyMusicRemoteDataSourceRetrofit())
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinder = LibraryMusicFragmentBinder(this)
+        viewBinder = MyMusicFragmentBinder(this)
 
         return viewBinder.onCreateView(inflater, container)
     }
@@ -35,23 +41,22 @@ class LibraryMusicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.library)
+            ?.setOnClickListener {
+                val navController = findNavController()
+
+                val action =
+                    MyMusicFragmentDirections.actionMyMusicFragmentToLibraryMusicFragment()
+                navController.navigate(action)
+            }
+
         (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.iTunes)
             ?.setOnClickListener {
                 val navController = findNavController()
 
                 val action =
-                    LibraryMusicFragmentDirections.actionLibraryMusicFragmentToITunesMusicFragment()
-                navController.navigate(action.actionId)
-            }
-
-        (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.myMusic)
-            ?.setOnClickListener {
-                val navController = findNavController()
-
-                val action =
-
-                    LibraryMusicFragmentDirections.actionLibraryMusicFragmentToMyMusicFragment()
-                navController.navigate(action.actionId)
+                    MyMusicFragmentDirections.actionMyMusicFragmentToITunesMusicFragment()
+                navController.navigate(action)
             }
 
         viewModel.loadData()
@@ -64,11 +69,11 @@ class LibraryMusicFragment : Fragment() {
             }
         }
 
-        tracksLibraryViewModel.loadTracks()
+       myMusicViewModel.loadTracks()
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                tracksLibraryViewModel.stateITunes.collect {
+                myMusicViewModel.stateITunes.collect {
                     viewBinder.tracksLoaded(it)
                 }
             }

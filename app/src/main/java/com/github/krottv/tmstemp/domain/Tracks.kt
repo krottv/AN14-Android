@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Tracks(
-    var artist: String,
-    var image: String,
-    var title: String,
-    var url: String
+    val artist: String,
+    val image: String,
+    val title: String,
+    val url: String
 )

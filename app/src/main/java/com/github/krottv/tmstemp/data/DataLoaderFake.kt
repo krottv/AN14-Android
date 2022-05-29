@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.data.remote
+package com.github.krottv.tmstemp.data
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -26,13 +26,14 @@ class DataLoaderFake : DataLoader {
         return builder.setContentText("Foreground service").build()
     }
 
-    private suspend fun loadDataFake(
+    override suspend fun loadDataFake(
         notificationManager: NotificationManager,
         builder: NotificationCompat.Builder
     ) {
         createNotificationChannel(notificationManager)
         for (i in 1..50) {
-            notificationManager.notify(10, builder.setProgress(50, i, false).build())
+            notificationManager.
+            notify(10, builder.setProgress(50, i, false).build())
             delay(100)
         }
     }

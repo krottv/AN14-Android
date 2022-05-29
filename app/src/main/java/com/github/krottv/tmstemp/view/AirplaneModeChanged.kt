@@ -2,31 +2,31 @@ package com.github.krottv.tmstemp.view
 
 import android.app.NotificationManager
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.github.krottv.tmstemp.R
-import com.github.krottv.tmstemp.data.remote.DataLoaderFake
+import com.github.krottv.tmstemp.data.DataLoaderFake
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 private const val CHANNEL_ID = "message"
 
 class AirplaneModeChanged : Service() {
-    private val notificationManager =
-        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
     override fun onCreate() {
         super.onCreate()
+        val notificationManager =
+            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         runBlocking {
             launch {
                 startForeground(
-                    10,
-                    DataLoaderFake().loadNotification(notificationManager, getBuilder())
+                    10, DataLoaderFake().loadNotification(notificationManager, getBuilder())
                 )
-                DataLoaderFake().loadData(notificationManager, getBuilder())
+              /*  DataLoaderFake().loadData(notificationManager, getBuilder())
+                 stopSelf()*/
+                DataLoaderFake().loadDataFake(notificationManager, getBuilder())
                 stopSelf()
                 DataLoaderFake().completeNotification(notificationManager, getBuilder())
             }

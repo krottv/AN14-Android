@@ -35,17 +35,23 @@ class ITunesMusicFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.myMusic)
+            ?.setOnClickListener {
+                val navController = findNavController()
+
+                val action =
+                    ITunesMusicFragmentDirections.actionITunesMusicFragmentToMyMusicFragment()
+                navController.navigate(action.actionId)
+            }
+
         (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.library)
             ?.setOnClickListener {
                 val navController = findNavController()
 
                 val action =
                     ITunesMusicFragmentDirections.actionITunesMusicFragmentToLibraryMusicFragment()
-                navController.navigate(action)
-
-                navController.saveState()
+                navController.navigate(action.actionId)
             }
-
         viewModel.loadData()
 
         lifecycleScope.launch {
