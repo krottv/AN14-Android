@@ -8,37 +8,20 @@ import com.github.krottv.tmstemp.domain.ContentType
 class AlbumsRepository(private val albumDbDataSource: AlbumDbDataSource,
                        private val albumRemoteDataSource: AlbumRemoteDataSource) {
 
-    suspend fun getItunesAlbums(): List<AlbumModel> {
+    suspend fun getAlbums(contentType: ContentType): List<AlbumModel> {
 
-        val cache = albumDbDataSource.getAlbums(ContentType.ITUNES)
-        val response = albumRemoteDataSource.getItunesAlbums()
+        val cache = albumDbDataSource.getAlbums()
+        val response = albumRemoteDataSource.getAlbums(contentType)
 
         if (cache == null) {
-            albumDbDataSource.saveAlbums(ContentType.ITUNES, response)
+            albumDbDataSource.saveAlbums(contentType, response)
             return response
         }
 
-        return if (cache.contains(ContentType.ITUNES)) {
-            cache[ContentType.ITUNES]!!
+        return if (cache.contains(contentType)) {
+            cache[contentType]!!
         } else {
-            albumDbDataSource.saveAlbums(ContentType.ITUNES, response)
-            response
-        }
-    }
-
-    suspend fun getLibraryAlbums(): List<AlbumModel> {
-        val cache = albumDbDataSource.getAlbums(ContentType.LIBRARY)
-        val response = albumRemoteDataSource.getLibraryAlbums()
-
-        if (cache == null) {
-            albumDbDataSource.saveAlbums(ContentType.LIBRARY, response)
-            return response
-        }
-
-        return if (cache.contains(ContentType.LIBRARY)) {
-            cache[ContentType.LIBRARY]!!
-        } else {
-            albumDbDataSource.saveAlbums(ContentType.LIBRARY, response)
+            albumDbDataSource.saveAlbums(contentType, response)
             response
         }
     }

@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.github.krottv.tmstemp.binder.SongFragmentBinder
+import com.github.krottv.tmstemp.domain.AlbumType
 import com.github.krottv.tmstemp.domain.ContentType
 import com.github.krottv.tmstemp.presentation.SongViewModel
 import kotlinx.coroutines.launch
@@ -33,7 +33,7 @@ class SongsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadData(requireArguments().getLong("album_id"), requireArguments().get("contentType") as ContentType)
+        viewModel.loadData(AlbumType(requireArguments().getLong("albumId"), requireArguments().get("contentType") as ContentType))
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect {

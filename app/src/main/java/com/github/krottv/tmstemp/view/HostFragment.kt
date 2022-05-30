@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.databinding.HostFragmentBinding
+import com.github.krottv.tmstemp.domain.AlbumType
 import com.github.krottv.tmstemp.domain.ContentType
 import com.github.krottv.tmstemp.presentation.AlbumViewModel
 import com.github.krottv.tmstemp.presentation.SongViewModel
@@ -34,7 +34,7 @@ class HostFragment: Fragment() {
         fragment = HostFragmentBinding.inflate(inflater)
 
 
-        songFragmentBundle.putLong("album_id", 1)
+        songFragmentBundle.putLong("albumId", 1)
         songFragmentBundle.putSerializable("contentType", ContentType.ITUNES)
         songsFragment.arguments = songFragmentBundle
 
@@ -54,14 +54,14 @@ class HostFragment: Fragment() {
         fragment.iTunes.setOnClickListener {
             albumFragmentBundle.putSerializable("contentType", ContentType.ITUNES)
             albumViewModel.loadData(ContentType.ITUNES)
-            songViewModel.loadData(1,ContentType.ITUNES)
+            songViewModel.loadData(AlbumType(1,ContentType.ITUNES))
             changeCurrentSelection(fragment.iTunes, fragment.library)
         }
 
         fragment.library.setOnClickListener {
             albumFragmentBundle.putSerializable("contentType", ContentType.LIBRARY)
             albumViewModel.loadData(ContentType.LIBRARY)
-            songViewModel.loadData(1,ContentType.LIBRARY)
+            songViewModel.loadData(AlbumType(1,ContentType.LIBRARY))
             changeCurrentSelection(fragment.library, fragment.iTunes)
         }
 

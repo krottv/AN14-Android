@@ -26,10 +26,7 @@ class AlbumViewModel(private val albumRepository: AlbumsRepository): ViewModel()
 
         downloadingJob = viewModelScope.launch(Dispatchers.IO) {
             val result = try {
-                when(contentType) {
-                    ContentType.ITUNES -> Result.success(albumRepository.getItunesAlbums())
-                    ContentType.LIBRARY -> Result.success(albumRepository.getLibraryAlbums())
-                }
+                Result.success(albumRepository.getAlbums(contentType))
             } catch (exception: Throwable) {
                 Result.failure(exception)
             }

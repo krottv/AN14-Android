@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.github.krottv.tmstemp.binder.AlbumFragmentBinder
+import com.github.krottv.tmstemp.domain.AlbumType
 import com.github.krottv.tmstemp.domain.ContentType
 import com.github.krottv.tmstemp.presentation.AlbumViewModel
 import com.github.krottv.tmstemp.presentation.SongViewModel
@@ -30,7 +29,7 @@ class AlbumsFragment: Fragment() {
     ): View {
 
         fragment = AlbumFragmentBinder(this) {
-            songViewModel.loadData(it, requireArguments().get("contentType") as ContentType)
+            songViewModel.loadData(AlbumType(it, requireArguments().get("contentType") as ContentType))
         }
 
         return fragment.bindView(inflater, container, savedInstanceState)

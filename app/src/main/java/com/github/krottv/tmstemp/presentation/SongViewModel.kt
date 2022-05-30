@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.krottv.tmstemp.data.SongsRepository
 import com.github.krottv.tmstemp.data.db.SongDbInMemoryDataSource
 import com.github.krottv.tmstemp.data.remote.SongRemoteDataSourceRetrofit
+import com.github.krottv.tmstemp.domain.AlbumType
 import com.github.krottv.tmstemp.domain.ContentType
 import com.github.krottv.tmstemp.domain.SongModel
 import kotlinx.coroutines.Dispatchers
@@ -20,15 +21,12 @@ class SongViewModel(private val songRepository: SongsRepository): ViewModel() {
 
     private var downloadingJob: Job? = null
 
-    fun loadData(album_id : Long, contentType: ContentType) {
+    fun loadData(albumType: AlbumType) {
         downloadingJob?.cancel()
 
         downloadingJob = viewModelScope.launch(Dispatchers.IO) {
             val result = try {
-                when(contentType) {
-                    ContentType.ITUNES -> Result.success(songRepository.getItunesSongs(album_id))
-                    ContentType.LIBRARY -> Result.success(songRepository.getLibrarySongs(album_id))
-                }
+                Result.success(songRepository.getSongs(albumType))
             } catch (exception: Throwable) {
                 Result.failure(exception)
             }
