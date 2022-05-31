@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.domain.AlbumModel
+import com.github.krottv.tmstemp.domain.TracksModel
 
 class AlbumsAdapter(var data: List<AlbumModel>) : RecyclerView.Adapter<AlbumsViewHolder>() {
 
