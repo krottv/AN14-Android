@@ -53,6 +53,14 @@ class ITunesMusicFragment : Fragment() {
                 navController.navigate(action.actionId)
 
             }
+        (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.imagePurchase)
+            ?.setOnClickListener {
+                val navController = findNavController()
+
+                val action =
+                    ITunesMusicFragmentDirections.actionITunesMusicFragmentToPurchaseFragment()
+                navController.navigate(action.actionId)
+            }
         viewModel.loadData()
 
         lifecycleScope.launch {

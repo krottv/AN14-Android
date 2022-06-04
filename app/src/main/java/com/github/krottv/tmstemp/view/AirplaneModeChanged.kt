@@ -24,10 +24,10 @@ class AirplaneModeChanged : Service() {
                 startForeground(
                     10, DataLoaderFake().loadNotification(notificationManager, getBuilder())
                 )
-              /*  DataLoaderFake().loadData(notificationManager, getBuilder())
-                 stopSelf()*/
-                DataLoaderFake().loadDataFake(notificationManager, getBuilder())
-                stopSelf()
+                DataLoaderFake().loadData(notificationManager, getBuilder())
+                 stopSelf()
+                /*DataLoaderFake().loadDataFake(notificationManager, getBuilder())
+                stopSelf()*/
                 DataLoaderFake().completeNotification(notificationManager, getBuilder())
             }
         }

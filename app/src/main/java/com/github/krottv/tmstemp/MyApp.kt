@@ -32,14 +32,13 @@ class MyApp : Application() {
         get() = module {
             viewModel { AlbumsViewModel(get()) }
             viewModel { TracksViewModel(get()) }
-            viewModel { MyMusicViewModel(get()) }
         }
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidContext(this@MyApp)
-            modules(libraryModule, itunesModule, viewModelModule, myMusicModule)
+            modules(libraryModule, itunesModule, viewModelModule)
         }
     }
 }

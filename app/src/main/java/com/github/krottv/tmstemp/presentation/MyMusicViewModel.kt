@@ -20,12 +20,4 @@ class MyMusicViewModel(private val musicApi: MusicApi) : ViewModel() {
             _stateITunes.emit(musicApi.getAlbums())
         }
     }
-    /*private val _stateMyMusic = MutableStateFlow<AlbumModel>(null)
-    val stateITunes: StateFlow<AlbumModel> = _stateMyMusic
-
-    fun loadTracks() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _stateMyMusic.emit(musicApi.getTracks(1))
-        }
-    }*/
 }

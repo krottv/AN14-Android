@@ -11,10 +11,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.github.krottv.tmstemp.R
-import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.data.remote.MyMusicRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
-import com.github.krottv.tmstemp.presentation.MyMusicViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -56,6 +54,14 @@ class MyMusicFragment : Fragment() {
 
                 val action =
                     MyMusicFragmentDirections.actionMyMusicFragmentToITunesMusicFragment()
+                navController.navigate(action)
+            }
+        (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.imagePurchase)
+            ?.setOnClickListener {
+                val navController = findNavController()
+
+                val action =
+                    MyMusicFragmentDirections.actionMyMusicFragmentToPurchaseFragment()
                 navController.navigate(action)
             }
 

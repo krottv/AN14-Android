@@ -26,7 +26,7 @@ class DataLoaderFake : DataLoader {
         return builder.setContentText("Foreground service").build()
     }
 
-    override suspend fun loadDataFake(
+    private suspend fun loadDataFake(
         notificationManager: NotificationManager,
         builder: NotificationCompat.Builder
     ) {
@@ -37,7 +37,6 @@ class DataLoaderFake : DataLoader {
             delay(100)
         }
     }
-
     override suspend fun completeNotification(
         notificationManager: NotificationManager,
         builder: NotificationCompat.Builder

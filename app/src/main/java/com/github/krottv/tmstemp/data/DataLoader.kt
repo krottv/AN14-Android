@@ -10,10 +10,7 @@ interface DataLoader {
         notificationManager: NotificationManager,
         builder: NotificationCompat.Builder
     )
-    suspend fun loadDataFake(
-        notificationManager: NotificationManager,
-        builder: NotificationCompat.Builder
-    )
+
     suspend fun loadNotification(
         notificationManager: NotificationManager,
         builder: NotificationCompat.Builder

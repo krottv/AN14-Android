@@ -41,7 +41,7 @@ class LibraryMusicFragment : Fragment() {
 
                 val action =
                     LibraryMusicFragmentDirections.actionLibraryMusicFragmentToITunesMusicFragment()
-                navController.navigate(action.actionId)
+                navController.navigate(action)
             }
 
         (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.myMusic)
@@ -51,9 +51,16 @@ class LibraryMusicFragment : Fragment() {
                 val action =
 
                     LibraryMusicFragmentDirections.actionLibraryMusicFragmentToMyMusicFragment()
-                navController.navigate(action.actionId)
+                navController.navigate(action)
             }
+        (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.imagePurchase)
+            ?.setOnClickListener {
+                val navController = findNavController()
 
+                val action =
+                    LibraryMusicFragmentDirections.actionLibraryMusicFragmentToPurchaseFragment()
+                navController.navigate(action)
+            }
         viewModel.loadData()
 
         lifecycleScope.launch {
