@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.krottv.tmstemp.databinding.MyMusicFragmentBinding
 import com.github.krottv.tmstemp.domain.AlbumModel
+import com.github.krottv.tmstemp.domain.Tracks
 import com.github.krottv.tmstemp.domain.TracksModel
 
-class MyMusicFragmentBinder(val fragment: MyMusicFragment) {
+class MyMusicFragmentBinder(val fragment: MyMusicFragment, val onItemClick: (View, Tracks) -> Boolean) {
 
     lateinit var binding: MyMusicFragmentBinding
 
@@ -42,7 +43,7 @@ class MyMusicFragmentBinder(val fragment: MyMusicFragment) {
 
         if (list != null) {
             if (binding.tracksRecyclerMyMusic.adapter == null)
-                binding.tracksRecyclerMyMusic.adapter = TracksAdapter(list.tracks)
+                binding.tracksRecyclerMyMusic.adapter = TracksAdapter(list.tracks, onItemClick)
             else
                 (binding.tracksRecyclerMyMusic.adapter as TracksAdapter).data = list.tracks
         }

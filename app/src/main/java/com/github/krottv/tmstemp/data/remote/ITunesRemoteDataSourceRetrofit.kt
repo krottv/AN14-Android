@@ -1,14 +1,17 @@
 package com.github.krottv.tmstemp.data.remote
 
+import com.github.krottv.tmstemp.data.RemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.domain.AlbumModel
 import com.github.krottv.tmstemp.domain.TracksModel
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.create
 
-class ITunesRemoteDataSourceRetrofit : MusicApi {
+class ITunesRemoteDataSourceRetrofit : RemoteDataSourceRetrofit {
 
     override suspend fun getAlbums(): List<AlbumModel> {
         val retrofit = Retrofit.Builder()
@@ -29,5 +32,9 @@ class ITunesRemoteDataSourceRetrofit : MusicApi {
         val musicApi: MusicApi = retrofit.create()
 
         return musicApi.getTracks(1)
+    }
+
+    override suspend fun downloadFile(fileUrl: String): Response<ResponseBody> {
+        TODO("Not yet implemented")
     }
 }

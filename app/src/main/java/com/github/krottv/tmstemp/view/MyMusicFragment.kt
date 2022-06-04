@@ -10,8 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.github.krottv.tmstemp.R
-import com.github.krottv.tmstemp.data.remote.MyMusicRemoteDataSourceRetrofit
+import com.github.krottv.tmstemp.data.UploadMusicWorker
+import com.github.krottv.tmstemp.domain.Tracks
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel
 import kotlinx.coroutines.launch
@@ -21,9 +25,7 @@ class MyMusicFragment : Fragment() {
 
     lateinit var viewBinder: MyMusicFragmentBinder
     private val viewModel: AlbumsViewModel by inject()
-    private val myMusicViewModel: TracksViewModel =
-        TracksViewModel(MyMusicRemoteDataSourceRetrofit())
-
+    private val myMusicViewModel: TracksViewModel by inject()
 
 
     override fun onCreateView(
@@ -31,9 +33,20 @@ class MyMusicFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinder = MyMusicFragmentBinder(this)
+        viewBinder = MyMusicFragmentBinder(this, ::onItemClick)
 
         return viewBinder.onCreateView(inflater, container)
+    }
+    private fun onItemClick(view: View, tracks: Tracks): Boolean {
+
+        val data = Data.Builder()
+        data.putString("1", tracks.url)
+
+        val uploadWork = OneTimeWorkRequestBuilder<UploadMusicWorker>().setInputData(data.build()).build()
+
+        WorkManager.getInstance(requireContext()).enqueue(uploadWork)
+
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,7 +88,7 @@ class MyMusicFragment : Fragment() {
             }
         }
 
-       myMusicViewModel.loadTracks()
+        myMusicViewModel.loadTracks()
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

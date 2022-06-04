@@ -10,7 +10,7 @@ import com.github.krottv.tmstemp.data.DataLoaderFake
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-private const val CHANNEL_ID = "message"
+//const val CHANNEL_ID: String = "message"
 
 class AirplaneModeChanged : Service() {
 

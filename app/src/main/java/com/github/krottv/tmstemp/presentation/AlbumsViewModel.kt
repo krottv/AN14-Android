@@ -2,6 +2,8 @@ package com.github.krottv.tmstemp.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.krottv.tmstemp.data.RemoteDataSourceRetrofit
+import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.data.remote.MusicApi
 import com.github.krottv.tmstemp.domain.AlbumModel
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 
-class AlbumsViewModel(private val musicApi: MusicApi) : ViewModel() {
+class AlbumsViewModel(private val musicApi: RemoteDataSourceRetrofit) : ViewModel() {
 
     private val _stateITunes = MutableStateFlow<List<AlbumModel>?>(null)
     val stateITunes: StateFlow<List<AlbumModel>?> = _stateITunes
