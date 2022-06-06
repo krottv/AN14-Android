@@ -1,5 +1,6 @@
 package com.github.krottv.tmstemp.presentation
 
+/*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.krottv.tmstemp.data.RemoteDataSourceRetrofit
@@ -21,4 +22,4 @@ class MyMusicViewModel(private val musicApi: RemoteDataSourceRetrofit) : ViewMod
             _stateITunes.emit(musicApi.getAlbums())
         }
     }
-}
+}*/

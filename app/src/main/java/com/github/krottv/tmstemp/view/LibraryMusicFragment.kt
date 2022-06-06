@@ -1,9 +1,12 @@
 package com.github.krottv.tmstemp.view
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -46,7 +49,8 @@ class LibraryMusicFragment : Fragment() {
         val data = Data.Builder()
         data.putString("1", tracks.url)
 
-        val uploadWork = OneTimeWorkRequestBuilder<UploadMusicWorker>().setInputData(data.build()).build()
+        val uploadWork =
+            OneTimeWorkRequestBuilder<UploadMusicWorker>().setInputData(data.build()).build()
 
 
         WorkManager.getInstance(requireContext()).enqueue(uploadWork)
@@ -65,17 +69,27 @@ class LibraryMusicFragment : Fragment() {
                 val action =
                     LibraryMusicFragmentDirections.actionLibraryMusicFragmentToITunesMusicFragment()
                 navController.navigate(action)
+                changeCurrentSelection(
+                    (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.iTunes) as TextView,
+                    (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.library) as TextView,
+                    (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.myMusic) as TextView,
+                )
             }
 
         (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.myMusic)
             ?.setOnClickListener {
-                val navController =findNavController()
+                val navController = findNavController()
 
                 val action =
-
                     LibraryMusicFragmentDirections.actionLibraryMusicFragmentToMyMusicFragment()
                 navController.navigate(action)
+                changeCurrentSelection(
+                    (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.myMusic) as TextView,
+                    (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.library) as TextView,
+                    (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.iTunes) as TextView,
+                )
             }
+
         (parentFragment as NavHostFragment).parentFragment?.view?.findViewById<View>(R.id.imagePurchase)
             ?.setOnClickListener {
                 val navController = findNavController()
@@ -103,5 +117,22 @@ class LibraryMusicFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun changeCurrentSelection(primary: TextView, secondary: TextView, three: TextView) {
+        primary.typeface = Typeface.DEFAULT_BOLD
+        primary.textSize = 18f
+        primary.setTextColor(ContextCompat.getColor(requireContext(), R.color.selectedTextColor))
+        primary.isClickable = false
+
+        secondary.typeface = Typeface.create("light", Typeface.NORMAL)
+        secondary.textSize = 16f
+        secondary.setTextColor(ContextCompat.getColor(requireContext(), R.color.textColor))
+        secondary.isClickable = true
+
+        three.typeface = Typeface.create("light", Typeface.NORMAL)
+        three.textSize = 16f
+        three.setTextColor(ContextCompat.getColor(requireContext(), R.color.textColor))
+        three.isClickable = true
     }
 }

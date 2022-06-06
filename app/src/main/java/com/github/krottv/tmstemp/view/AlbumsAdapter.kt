@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.domain.AlbumModel
+import com.github.krottv.tmstemp.domain.Tracks
 import com.github.krottv.tmstemp.domain.TracksModel
+import kotlin.reflect.KFunction2
 
-class AlbumsAdapter(var data: List<AlbumModel>) : RecyclerView.Adapter<AlbumsViewHolder>() {
+class  AlbumsAdapter(var data: List<AlbumModel>) : RecyclerView.Adapter<AlbumsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_album, parent, false)

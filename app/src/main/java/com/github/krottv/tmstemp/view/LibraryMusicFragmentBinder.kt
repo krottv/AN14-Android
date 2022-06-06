@@ -9,6 +9,7 @@ import com.github.krottv.tmstemp.databinding.LibraryMusicFragmentBinding
 import com.github.krottv.tmstemp.domain.AlbumModel
 import com.github.krottv.tmstemp.domain.Tracks
 import com.github.krottv.tmstemp.domain.TracksModel
+import kotlin.reflect.KFunction2
 
 class LibraryMusicFragmentBinder(
     val fragment: LibraryMusicFragment,
@@ -50,7 +51,9 @@ class LibraryMusicFragmentBinder(
 
         if (list != null) {
             if (binding.tracksRecyclerAlbum.adapter == null)
-                binding.tracksRecyclerAlbum.adapter = TracksAdapter(list.tracks, onItemClick)
+                binding.tracksRecyclerAlbum.adapter = TracksAdapter(list.tracks,
+                    onItemClick as KFunction2<View, Tracks, Boolean>
+                )
             else
                 (binding.tracksRecyclerAlbum.adapter as TracksAdapter).data = list.tracks
         }

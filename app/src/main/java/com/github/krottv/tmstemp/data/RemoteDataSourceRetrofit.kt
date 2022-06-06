@@ -8,6 +8,7 @@ import retrofit2.http.Query
 import retrofit2.http.Url
 
 interface RemoteDataSourceRetrofit {
+
     suspend fun getAlbums(): List<AlbumModel>
 
     suspend fun getTracks(@Query("albumId") albumId: Long): TracksModel

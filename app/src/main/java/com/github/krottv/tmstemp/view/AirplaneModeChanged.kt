@@ -7,8 +7,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.data.DataLoaderFake
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 //const val CHANNEL_ID: String = "message"
 
@@ -18,6 +17,8 @@ class AirplaneModeChanged : Service() {
         super.onCreate()
         val notificationManager =
             getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
         runBlocking {
             launch {

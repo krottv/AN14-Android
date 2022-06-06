@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.domain.Tracks
+import kotlin.reflect.KFunction2
 
-class TracksAdapter(var data: List<Tracks>, kFunction2: (View, Tracks) -> Boolean) : RecyclerView.Adapter<TracksViewHolder>() {
+class TracksAdapter(var data: List<Tracks>, kFunction2: KFunction2<View, Tracks, Boolean>) : RecyclerView.Adapter<TracksViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TracksViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_track, parent, false)
