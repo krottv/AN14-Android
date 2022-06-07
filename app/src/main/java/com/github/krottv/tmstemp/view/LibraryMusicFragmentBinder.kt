@@ -52,8 +52,7 @@ class LibraryMusicFragmentBinder(
         if (list != null) {
             if (binding.tracksRecyclerAlbum.adapter == null)
                 binding.tracksRecyclerAlbum.adapter = TracksAdapter(list.tracks,
-                    onItemClick as KFunction2<View, Tracks, Boolean>
-                )
+                    onItemClick)
             else
                 (binding.tracksRecyclerAlbum.adapter as TracksAdapter).data = list.tracks
         }

@@ -13,20 +13,32 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.data.UploadMusicWorker
+import com.github.krottv.tmstemp.data.db.AlbumsRepository
+import com.github.krottv.tmstemp.data.db.LibraryRoomDataSource
+import com.github.krottv.tmstemp.data.libraryroom.LibraryDatabase
+import com.github.krottv.tmstemp.data.libraryroom.LibraryDatabase_Impl
 import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.domain.Tracks
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class LibraryMusicFragment : Fragment() {
     lateinit var viewBinder: LibraryMusicFragmentBinder
-    private val viewModel: AlbumsViewModel = AlbumsViewModel(LibraryRemoteDataSourceRetrofit())
+    private val viewModel: AlbumsViewModel = AlbumsViewModel(
+        AlbumsRepository(
+            LibraryRoomDataSource(Room.databaseBuilder(requireContext(), LibraryDatabase::class.java, "database-name").build()),
+            LibraryRemoteDataSourceRetrofit(),
+            true
+        )
+    )
     private val tracksLibraryViewModel: TracksViewModel =
         TracksViewModel(LibraryRemoteDataSourceRetrofit())
 
@@ -43,7 +55,6 @@ class LibraryMusicFragment : Fragment() {
     val libraryRemoteDataSourceRetrofit: LibraryRemoteDataSourceRetrofit =
         LibraryRemoteDataSourceRetrofit()
 
-
     private fun onItemClick(view: View, tracks: Tracks): Boolean {
 
         val data = Data.Builder()
@@ -52,9 +63,7 @@ class LibraryMusicFragment : Fragment() {
         val uploadWork =
             OneTimeWorkRequestBuilder<UploadMusicWorker>().setInputData(data.build()).build()
 
-
         WorkManager.getInstance(requireContext()).enqueue(uploadWork)
-
         return true
     }
 
@@ -103,7 +112,8 @@ class LibraryMusicFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.stateITunes.collect {
-                    viewBinder.onDataLoaded(it)
+                    if (it != null)
+                        viewBinder.onDataLoaded(it.getOrThrow())
                 }
             }
         }

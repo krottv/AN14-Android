@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.data
+package com.github.krottv.tmstemp.data.remote
 
 import com.github.krottv.tmstemp.domain.AlbumModel
 import com.github.krottv.tmstemp.domain.TracksModel

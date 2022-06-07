@@ -13,7 +13,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.github.krottv.tmstemp.R
+import com.github.krottv.tmstemp.data.db.AlbumsRepository
+import com.github.krottv.tmstemp.data.db.ITunesRoomDataSource
+import com.github.krottv.tmstemp.data.db.LibraryRoomDataSource
+import com.github.krottv.tmstemp.data.itunesroom.MyDatabase
+import com.github.krottv.tmstemp.data.remote.ITunesRemoteDataSourceRetrofit
+import com.github.krottv.tmstemp.data.remote.LibraryRemoteDataSourceRetrofit
 import com.github.krottv.tmstemp.presentation.AlbumsViewModel
 import com.github.krottv.tmstemp.presentation.TracksViewModel
 import kotlinx.coroutines.launch
@@ -23,7 +30,19 @@ import org.koin.android.ext.android.inject
 class ITunesMusicFragment : Fragment() {
 
     lateinit var viewBinder: ITunesMusicFragmentBinder
-    private val viewModel: AlbumsViewModel by inject()
+    private val viewModel: AlbumsViewModel = AlbumsViewModel(
+        AlbumsRepository(
+            ITunesRoomDataSource(
+                Room.databaseBuilder(
+                    requireContext(),
+                    MyDatabase::class.java,
+                    "database-name"
+                ).build()
+            ),
+            ITunesRemoteDataSourceRetrofit(),
+            true
+        )
+    )
     private val tracksITunesViewModel: TracksViewModel by inject()
 
     override fun onCreateView(
@@ -81,7 +100,8 @@ class ITunesMusicFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.stateITunes.collect {
-                    viewBinder.onDataLoaded(it)
+                    if (it != null)
+                        viewBinder.onDataLoaded(it.getOrThrow())
                 }
             }
         }
@@ -97,7 +117,8 @@ class ITunesMusicFragment : Fragment() {
             }
         }
     }
-  private fun changeCurrentSelection(primary: TextView, secondary: TextView, three: TextView ) {
+
+    private fun changeCurrentSelection(primary: TextView, secondary: TextView, three: TextView) {
         primary.typeface = Typeface.DEFAULT_BOLD
         primary.textSize = 18f
         primary.setTextColor(ContextCompat.getColor(requireContext(), R.color.selectedTextColor))

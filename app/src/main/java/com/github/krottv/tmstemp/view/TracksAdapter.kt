@@ -13,7 +13,8 @@ import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.domain.Tracks
 import kotlin.reflect.KFunction2
 
-class TracksAdapter(var data: List<Tracks>, kFunction2: KFunction2<View, Tracks, Boolean>) : RecyclerView.Adapter<TracksViewHolder>() {
+class TracksAdapter(var data: List<Tracks>, val onItemClick: (View, Tracks) -> Boolean) :
+    RecyclerView.Adapter<TracksViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TracksViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_track, parent, false)
@@ -32,6 +33,7 @@ class TracksAdapter(var data: List<Tracks>, kFunction2: KFunction2<View, Tracks,
         }
         holder.titleTrack.text = item.title
         holder.textTrack.text = item.artist
+        holder.itemView.setOnLongClickListener { onItemClick(it, item) }
     }
 
     override fun getItemCount(): Int {

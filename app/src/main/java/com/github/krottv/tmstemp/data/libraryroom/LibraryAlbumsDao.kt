@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.data.room
+package com.github.krottv.tmstemp.data.libraryroom
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
 
 
 @Dao
-interface AlbumsDao {
+interface LibraryAlbumsDao {
 
     @Insert
     suspend fun saveAlbums(albums: List<AlbumModel>)
 
-    @Query("SELECT * FROM albums order by name asc")
+    @Query("SELECT * FROM albums")
     suspend fun getAlbums(): List<AlbumModel>
 
     @Query("select * from albums where id = :albumId")
@@ -28,5 +28,5 @@ interface AlbumsDao {
     }
 
     @Query("select * from albums where id = :albumId")
-    suspend fun getAlbumWithTracks(albumId: Long): TracksWithAlbumEntity
+    suspend fun getAlbumWithTracks(albumId: Long): LibraryTracksWithAlbumEntity
 }

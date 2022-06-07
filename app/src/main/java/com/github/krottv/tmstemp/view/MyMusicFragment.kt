@@ -179,7 +179,8 @@ class MyMusicFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.stateITunes.collect {
-                    viewBinder.onDataLoaded(it)
+                    if (it != null)
+                    viewBinder.onDataLoaded(it.getOrThrow())
                 }
             }
         }
