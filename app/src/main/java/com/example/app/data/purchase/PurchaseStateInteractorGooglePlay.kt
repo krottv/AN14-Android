@@ -1,8 +1,7 @@
-package com.example.mymusicplayer.data.purchase
+package com.example.app.data.purchase
 
 import android.content.Context
 import com.android.billingclient.api.*
-import com.example.app.data.purchase.GooglePlayProductMapper
 import com.example.app.domain.purchase.ProductEntity
 import com.example.app.domain.purchase.PurchaseStateInteractor
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +16,7 @@ class PurchaseStateInteractorGooglePlay(
     }
 
     val _isPremium = MutableStateFlow(false)
-    override val isPremium: StateFlow<Boolean> = _isPremium
+    override var isPremium: StateFlow<Boolean> = _isPremium
 
     private val purchasesUpdatedListener =
         PurchasesUpdatedListener { billingResult, purchases ->

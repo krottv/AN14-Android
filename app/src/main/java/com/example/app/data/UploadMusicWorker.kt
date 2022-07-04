@@ -18,22 +18,16 @@ class UploadMusicWorker(
 ) : CoroutineWorker(appContext, params) {
 
     private val downloadNotification: DownloadNotification = DownloadNotification(appContext)
-    private val baseUrl = inputData.getString("2")
     private val remoteDataSourceRetrofit = RemoteDataSourceRetrofit()
 
     override suspend fun doWork(): Result {
 
         setForeground(getForegroundInfo())
         val url = inputData.getString("1")
-        Log.i("test", url!!)
-        val fileName = url.substring(url.lastIndexOf("/") + 1)
+        val fileName = url!!.substring(url.lastIndexOf("/") + 1)
         val pathWhereYouWantToSaveFile = appContext.filesDir.absolutePath + fileName
         val responseBody = url.let { remoteDataSourceRetrofit.downloadFile(it).body() }
         saveFile(responseBody, pathWhereYouWantToSaveFile)
-        //delay(2000L)
-        Log.i("test", appContext.filesDir.absolutePath.toString())
-
-        //Log.i("Test", tracks.url + " " + pathWhereYouWantToSaveFile)
 
         return Result.success()
     }

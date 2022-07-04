@@ -16,25 +16,25 @@ class RemoteDataSourceRetrofit() : RemoteDataSource {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://stellio.ru/.inspiry/")
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
-        .build()
+        .build().create() as MusicApi
 
     override suspend fun getItunesAlbums(): List<AlbumModel> {
-        return (retrofit.create() as MusicApi).getItunesAlbums()
+        return retrofit.getItunesAlbums()
     }
 
     override suspend fun getItunesTracks(albumId: Long): TracksWithAlbums {
-        return (retrofit.create() as MusicApi).getItunesTracks(1)
+        return retrofit.getItunesTracks(1)
     }
 
     override suspend fun getLibraryAlbums(): List<AlbumModel> {
-        return (retrofit.create() as MusicApi).getLibraryAlbums()
+        return retrofit.getLibraryAlbums()
     }
 
     override suspend fun getLibraryTracks(albumId: Long): TracksWithAlbums {
-        return (retrofit.create() as MusicApi).getLibraryTracks(albumId)
+        return retrofit.getLibraryTracks(albumId)
     }
 
     override suspend fun downloadFile(fileUrl: String): Response<ResponseBody> {
-        return (retrofit.create() as MusicApi).downloadFile(fileUrl);
+        return retrofit.downloadFile(fileUrl);
     }
 }

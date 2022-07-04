@@ -18,16 +18,4 @@ interface AlbumsDao {
     @Query("SELECT * FROM albums where typeAlbum = 'library'")
     suspend fun getLibraryAlbums(): List<AlbumDBModel>
 
-    /*@Query("select * from albums where id = :albumId")
-    fun findAlbumById(albumId: Long): Flow<AlbumDBModel?>*/
-
-    /*@Transaction
-    suspend fun savesAlbumsTenTime(albums: List<AlbumDBModel>) {
-        for (i in 1..10) {
-            saveAlbums(albums)
-        }
-    }*/
-
-    /*@Query("select * from albums where id = :albumId")
-    suspend fun getAlbumWithTracks(albumId: Long): TracksWithAlbumEntity*/
 }
